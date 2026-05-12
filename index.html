@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Invisible Workforce — The Yootle Institute for Employee Dignity</title>
+<meta name="description" content="A research brief on the governance gap in the agentic workforce. Where do AI agents sit on the org chart? Published March 2026 by The Yootle Institute for Employee Dignity." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        oklch(97% 0.008 85);
+    --paper-warm:   oklch(94.5% 0.012 80);
+    --paper-deep:   oklch(91% 0.015 78);
+    --ink:          oklch(20% 0.012 60);
+    --ink-soft:     oklch(35% 0.012 60);
+    --ink-mute:     oklch(52% 0.012 60);
+    --rule:         oklch(85% 0.012 75);
+    --rule-soft:    oklch(89% 0.010 75);
+    --accent:       oklch(43% 0.13 30);   /* oxblood */
+    --accent-deep:  oklch(33% 0.11 30);
+    --accent-soft:  oklch(92% 0.025 35);
+
+    --serif: "Newsreader", "Source Serif Pro", Georgia, serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --maxw: 1200px;
+    --readw: 720px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  /* ─────────── Layout ─────────── */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .read { max-width: var(--readw); }
+
+  /* ─────────── Masthead ─────────── */
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(8px);
+    background: color-mix(in oklch, var(--paper) 92%, transparent);
+  }
+  .masthead-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .wordmark { display: flex; align-items: center; gap: 12px; }
+  .wordmark .mark {
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--serif); font-weight: 500;
+    font-size: 18px; font-style: italic;
+    border-radius: 2px;
+  }
+  .wordmark .name {
+    font-family: var(--serif);
+    font-size: 17px; font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .wordmark .sub {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .wordmark .stack { display: flex; flex-direction: column; line-height: 1.15; }
+
+  nav.primary { display: flex; gap: 28px; align-items: center; }
+  nav.primary a {
+    font-size: 13.5px; color: var(--ink-soft);
+    letter-spacing: 0.005em;
+  }
+  nav.primary a:hover { color: var(--accent); }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 500;
+    background: var(--ink); color: var(--paper);
+    padding: 9px 16px; border-radius: 2px;
+    transition: background .15s ease;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--paper); }
+
+  /* ─────────── Hero ─────────── */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker .dot {
+    width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    display: inline-block;
+  }
+  .kicker .meta {
+    color: var(--ink-mute);
+    border-left: 1px solid var(--rule);
+    padding-left: 14px;
+  }
+
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 7.2vw, 104px);
+    line-height: 0.97;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h1.title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+  .deck {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 760px;
+    font-weight: 300;
+    margin: 0 0 40px;
+    text-wrap: pretty;
+  }
+  .deck strong { color: var(--ink); font-weight: 500; }
+
+  .cta-row {
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    padding: 14px 22px;
+    border-radius: 2px;
+    transition: all .15s ease;
+    cursor: pointer; border: none;
+    letter-spacing: 0.002em;
+  }
+  .btn-primary { background: var(--accent); color: var(--paper); }
+  .btn-primary:hover { background: var(--accent-deep); color: var(--paper); }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+  .btn svg { width: 14px; height: 14px; }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero-meta > div {
+    padding-right: 24px;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .hero-meta > div:last-child { border-right: none; }
+  .hero-meta .label {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 8px;
+  }
+  .hero-meta .value {
+    font-family: var(--serif); font-size: 17px;
+    color: var(--ink); line-height: 1.3;
+  }
+
+  /* ─────────── Section scaffolding ─────────── */
+  section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.tight { padding: 64px 0; }
+  section.alt { background: var(--paper-warm); }
+  section.dark { background: var(--ink); color: var(--paper); border-bottom: none; }
+  section.dark .section-label { color: oklch(70% 0.02 60); }
+  section.dark .section-label .num { color: oklch(75% 0.08 30); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+    align-items: baseline;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 14px;
+  }
+  .section-label .num { color: var(--accent); margin-right: 10px; }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.2vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: inherit;
+    text-wrap: balance;
+  }
+  .section-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .section-dek {
+    font-family: var(--serif);
+    font-size: 20px; line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 24px 0 0;
+    font-weight: 300;
+    text-wrap: pretty;
+  }
+  section.dark .section-dek { color: oklch(80% 0.012 70); }
+  section.dark .section-title { color: var(--paper); }
+
+  /* ─────────── Executive Summary ─────────── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr 320px;
+    gap: 64px;
+  }
+  .summary-body p {
+    font-family: var(--serif);
+    font-size: 22px; line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 24px;
+    font-weight: 300;
+    text-wrap: pretty;
+  }
+  .summary-body p:first-child::first-letter {
+    font-family: var(--serif);
+    font-size: 88px;
+    float: left;
+    line-height: 0.85;
+    padding: 8px 12px 0 0;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .summary-body p strong { font-weight: 500; color: var(--ink); }
+  .summary-aside {
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+    padding-top: 8px;
+  }
+  .summary-aside .pull-num {
+    font-family: var(--serif);
+    font-size: 88px; font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .summary-aside .pull-label {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+  .summary-aside .divider {
+    height: 1px; background: var(--rule);
+    margin: 28px 0;
+  }
+
+  /* ─────────── Data Table — "The Numbers" ─────────── */
+  .numbers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .numbers-table th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-mute);
+    padding: 0 24px 16px 0;
+    border-bottom: 1px solid var(--ink);
+    font-weight: 500;
+  }
+  .numbers-table th.r { text-align: right; padding-right: 0; }
+  .numbers-table td {
+    padding: 24px 24px 24px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+  .numbers-table td.figure {
+    font-family: var(--serif);
+    font-size: 44px; font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    width: 22%;
+    white-space: nowrap;
+  }
+  .numbers-table td.meaning {
+    font-family: var(--serif);
+    font-size: 19px; line-height: 1.4;
+    color: var(--ink);
+    font-weight: 300;
+    width: 58%;
+  }
+  .numbers-table td.source {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: right;
+    padding-right: 0;
+    width: 20%;
+  }
+  .numbers-foot {
+    margin-top: 32px;
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 780px;
+    font-weight: 300;
+    font-style: italic;
+    text-wrap: pretty;
+  }
+
+  /* ─────────── Seven Questions ─────────── */
+  .questions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .q {
+    display: grid;
+    grid-template-columns: 80px 1fr 280px;
+    gap: 48px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .q-num {
+    font-family: var(--serif);
+    font-size: 56px; font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .q-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(24px, 2.4vw, 30px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .q-body p {
+    font-family: var(--sans);
+    font-size: 15.5px; line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 640px;
+    text-wrap: pretty;
+  }
+  .q-body p + p { margin-top: 12px; }
+  .q-body em.callout {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .q-tag {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-top: 1px solid var(--accent);
+    padding-top: 12px;
+  }
+  .q-tag .label { color: var(--accent); display: block; margin-bottom: 6px; }
+
+  /* ─────────── Truth Debt ─────────── */
+  .pullquote {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.25;
+    font-weight: 300;
+    color: var(--paper);
+    letter-spacing: -0.015em;
+    margin: 0 0 48px;
+    max-width: 880px;
+    text-wrap: pretty;
+  }
+  .pullquote em {
+    font-style: italic;
+    color: oklch(78% 0.12 35);
+  }
+
+  .mechanisms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .mech {
+    border-top: 1px solid oklch(40% 0.012 60);
+    padding-top: 24px;
+  }
+  .mech .mnum {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    color: oklch(78% 0.12 35);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .mech h4 {
+    font-family: var(--serif); font-size: 22px; font-weight: 400;
+    color: var(--paper);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .mech p {
+    font-family: var(--sans); font-size: 14.5px;
+    line-height: 1.55;
+    color: oklch(78% 0.012 70);
+    margin: 0;
+  }
+
+  /* ─────────── Recommendations ─────────── */
+  .recs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .rec {
+    padding: 40px 32px 40px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rec:nth-child(odd) { padding-right: 48px; border-right: 1px solid var(--rule); }
+  .rec:nth-child(even) { padding-left: 48px; }
+  .rec:nth-last-child(-n+2) { border-bottom: none; }
+  .rec .rec-num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .rec h4 {
+    font-family: var(--serif); font-size: 26px; font-weight: 400;
+    line-height: 1.2; margin: 0 0 14px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .rec p {
+    font-family: var(--sans); font-size: 15px; line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ─────────── Survey CTA ─────────── */
+  .survey {
+    background: var(--accent);
+    color: var(--paper);
+    border-bottom: none;
+  }
+  .survey .section-label { color: oklch(82% 0.04 30); }
+  .survey .section-label .num { color: var(--paper); }
+  .survey-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+  }
+  .survey h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.4vw, 60px);
+    font-weight: 400; line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: var(--paper);
+    max-width: 900px;
+    text-wrap: balance;
+  }
+  .survey h2 em { font-style: italic; color: oklch(88% 0.06 35); font-weight: 300; }
+  .survey-lede {
+    font-family: var(--serif);
+    font-size: 21px; line-height: 1.5;
+    color: oklch(92% 0.025 35);
+    max-width: 760px;
+    margin: 0 0 40px;
+    font-weight: 300;
+    text-wrap: pretty;
+  }
+
+  .survey-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+    margin-bottom: 40px;
+  }
+  .survey-form .full { grid-column: 1 / -1; }
+  .survey-form label {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: oklch(82% 0.04 30);
+    display: block; margin-bottom: 8px;
+  }
+  .survey-form input, .survey-form select {
+    width: 100%;
+    font-family: var(--sans); font-size: 15px;
+    background: transparent;
+    color: var(--paper);
+    border: none;
+    border-bottom: 1px solid oklch(70% 0.06 30);
+    padding: 10px 0;
+    outline: none;
+    transition: border-color .2s ease;
+  }
+  .survey-form input::placeholder { color: oklch(75% 0.04 30); }
+  .survey-form input:focus, .survey-form select:focus {
+    border-bottom-color: var(--paper);
+  }
+  .survey-form select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23f5ecdd' stroke-width='1.5' d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; cursor: pointer; }
+  .survey-form select option { background: var(--accent-deep); color: var(--paper); }
+
+  .btn-on-accent {
+    background: var(--paper); color: var(--accent);
+  }
+  .btn-on-accent:hover { background: var(--ink); color: var(--paper); }
+
+  .survey-questions {
+    margin-top: 56px;
+    border-top: 1px solid oklch(70% 0.06 30);
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 48px;
+  }
+  .survey-q {
+    display: flex; gap: 16px;
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.45;
+    color: oklch(94% 0.03 35);
+    font-weight: 300;
+  }
+  .survey-q .qn {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--paper);
+    flex: 0 0 auto;
+    padding-top: 4px;
+    opacity: 0.7;
+  }
+
+  /* ─────────── About ─────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr 380px;
+    gap: 64px;
+  }
+  .about-body p {
+    font-family: var(--serif);
+    font-size: 20px; line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 20px;
+    font-weight: 300;
+    text-wrap: pretty;
+  }
+  .about-body p strong { font-weight: 500; }
+  .about-aside {
+    background: var(--paper-deep);
+    padding: 32px;
+    border-radius: 2px;
+  }
+  .about-aside h4 {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 16px;
+  }
+  .about-aside dl {
+    margin: 0; display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 20px;
+    font-family: var(--sans); font-size: 14px;
+  }
+  .about-aside dt {
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 4px;
+  }
+  .about-aside dd {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .about-aside dd a { border-bottom: 1px solid var(--rule); }
+  .about-aside dd a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  /* ─────────── Footer ─────────── */
+  footer {
+    background: var(--ink);
+    color: oklch(75% 0.012 70);
+    padding: 64px 0 32px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+  }
+  .foot-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid oklch(30% 0.012 60);
+  }
+  .foot-top .wordmark .mark { background: var(--paper); color: var(--ink); }
+  .foot-top .wordmark .name { color: var(--paper); }
+  .foot-top .wordmark .sub { color: oklch(65% 0.012 70); }
+  .foot-tag {
+    margin-top: 20px;
+    max-width: 360px;
+    font-family: var(--serif); font-size: 16px;
+    line-height: 1.5; color: oklch(85% 0.012 70);
+    font-weight: 300;
+  }
+  .foot-col h5 {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--paper);
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+  .foot-col ul { list-style: none; margin: 0; padding: 0; }
+  .foot-col li { margin-bottom: 10px; }
+  .foot-col a { color: oklch(78% 0.012 70); }
+  .foot-col a:hover { color: var(--paper); }
+  .foot-bot {
+    padding-top: 32px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em;
+    color: oklch(58% 0.012 70);
+    text-transform: uppercase;
+  }
+
+  /* ─────────── References block ─────────── */
+  .refs {
+    background: var(--paper-warm);
+  }
+  .refs ol {
+    margin: 0; padding: 0 0 0 24px;
+    columns: 2;
+    column-gap: 64px;
+    font-family: var(--sans);
+    font-size: 13.5px; line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .refs li {
+    margin-bottom: 16px;
+    break-inside: avoid;
+    padding-left: 8px;
+  }
+  .refs li strong { color: var(--ink); font-weight: 500; }
+
+  /* ─────────── Responsive ─────────── */
+  @media (max-width: 980px) {
+    .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+    .summary-grid { grid-template-columns: 1fr; gap: 40px; }
+    .summary-aside { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .survey-grid { grid-template-columns: 1fr; gap: 24px; }
+    .mechanisms { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .recs { grid-template-columns: 1fr; }
+    .rec:nth-child(odd), .rec:nth-child(even) { padding: 32px 0; border-right: none; }
+    .rec:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
+    .q { grid-template-columns: 56px 1fr; gap: 24px; padding: 32px 0; }
+    .q-tag { grid-column: 1 / -1; padding-top: 8px; border-top: none; }
+    .hero-meta { grid-template-columns: 1fr 1fr; gap: 0; }
+    .hero-meta > div { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--rule-soft); }
+    .refs ol { columns: 1; }
+    .foot-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .survey-form { grid-template-columns: 1fr; }
+    .survey-questions { grid-template-columns: 1fr; }
+    nav.primary { gap: 14px; }
+    nav.primary a:not(.nav-cta) { display: none; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    section { padding: 64px 0; }
+    .hero { padding: 56px 0 48px; }
+    .numbers-table td.figure { font-size: 32px; }
+    .numbers-table td.meaning { font-size: 16px; }
+    .numbers-table td.source { display: none; }
+    .numbers-table th.r { display: none; }
+    .foot-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────── MASTHEAD ─────────── -->
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="#" class="wordmark">
+      <span class="mark">Y</span>
+      <span class="stack">
+        <span class="name">The Yootle Institute</span>
+        <span class="sub">For Employee Dignity</span>
+      </span>
+    </a>
+    <nav class="primary">
+      <a href="#report">The Report</a>
+      <a href="#numbers">Findings</a>
+      <a href="#survey">CHRO Survey</a>
+      <a href="#about">About</a>
+      <a href="#survey" class="nav-cta">Take the Survey</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero" id="report" style="border-bottom:1px solid var(--rule);">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="dot"></span>
+      Research Brief · Vol. 01
+      <span class="meta">Published March 2026 · 10 pages · Free to share with attribution</span>
+    </div>
+    <h1 class="title">The Invisible<br/>Workforce.<br/><em>Where do AI agents<br/>sit on the org chart?</em></h1>
+    <p class="deck">
+      A research brief on <strong>the governance gap in the agentic workforce</strong> — and why CHROs, Chief People Officers, and Heads of HR must act now to govern a workforce that is growing faster than any in history, with zero representation in existing people systems.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('survey').scrollIntoView({behavior:'smooth'});">
+        Participate in the CHRO Survey
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+      <a class="btn btn-secondary" href="uploads/Yootle_Institute_The_Invisible_Workforce_March_2026.pdf" target="_blank" rel="noopener">
+        Read the full report (PDF)
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v9M3 7l4 4 4-4M2 13h10"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-meta">
+      <div>
+        <div class="label">Published</div>
+        <div class="value">March 2026</div>
+      </div>
+      <div>
+        <div class="label">Audience</div>
+        <div class="value">CHROs, CPOs, Heads of HR</div>
+      </div>
+      <div>
+        <div class="label">Sources synthesized</div>
+        <div class="value">10 primary, including Salesforce, Gallup, McKinsey, Gartner, BCG, PwC</div>
+      </div>
+      <div>
+        <div class="label">Reading time</div>
+        <div class="value">18 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── EXECUTIVE SUMMARY ─────────── -->
+<section id="summary">
+  <div class="wrap">
+    <div class="summary-grid">
+      <div class="section-label"><span class="num">§ 01</span> Executive Summary</div>
+      <div class="summary-body">
+        <p>
+          By the end of 2027, CHROs expect a <strong>327% increase</strong> in AI agent adoption within their organizations. Eighty percent of business leaders expect to use AI agents to expand workforce capacity. One in five companies plans to use AI to eliminate more than half of their mid-tier roles by late 2026. <strong>This is not a forecast. It is a transition already underway.</strong>
+        </p>
+        <p>
+          Yet the humans responsible for governing this workforce have no tools, no frameworks, and no precedent for managing it. No major HR information system tracks AI agents as workforce members. No org chart includes them. No performance review evaluates the quality of human–AI collaboration.
+        </p>
+        <p>
+          The agentic workforce represents <strong>the largest ungoverned expansion of organizational capacity in modern history</strong> — and the CHRO is the only executive positioned to govern it before it governs itself.
+        </p>
+      </div>
+      <aside class="summary-aside">
+        <div class="pull-num">327%</div>
+        <div class="pull-label">Projected growth in agent adoption by 2027, per CHROs surveyed by Salesforce.</div>
+        <div class="divider"></div>
+        <div class="pull-num">73%</div>
+        <div class="pull-label">Of CHROs say employees remain unaware of how AI agents will impact their work.</div>
+        <div class="divider"></div>
+        <div class="pull-num">$438B</div>
+        <div class="pull-label">Lost global productivity from disengagement, per Gallup's 2025 State of the Global Workplace.</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── THE NUMBERS ─────────── -->
+<section id="numbers" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label"><span class="num">§ 02</span> The Numbers</div>
+      <div>
+        <h2 class="section-title">A workforce arriving <em>without governance.</em></h2>
+        <p class="section-dek">The scale of the shift is no longer debatable. What follows is drawn entirely from published research by Salesforce, Gallup, McKinsey, Gartner, PwC, BCG, Fortune, and primary CHRO surveys.</p>
+      </div>
+    </div>
+
+    <table class="numbers-table">
+      <thead>
+        <tr>
+          <th>Finding</th>
+          <th>What it means</th>
+          <th class="r">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="figure">327%</td><td class="meaning">Agent adoption expected to grow 327% by 2027.</td><td class="source">Salesforce</td></tr>
+        <tr><td class="figure">80%</td><td class="meaning">Business leaders expecting to use agents to expand workforce.</td><td class="source">Pinnacle CHRO</td></tr>
+        <tr><td class="figure">97%</td><td class="meaning">Employees prefer AI advice over their manager.</td><td class="source">Pinnacle CHRO</td></tr>
+        <tr><td class="figure">2:1</td><td class="meaning">Shadow AI tool use outpaces official adoption.</td><td class="source">Pinnacle CHRO</td></tr>
+        <tr><td class="figure">73%</td><td class="meaning">Employees unaware of how agents will affect their work.</td><td class="source">Salesforce</td></tr>
+        <tr><td class="figure">20%</td><td class="meaning">Companies planning to flatten hierarchy using AI by late 2026.</td><td class="source">Fortune</td></tr>
+        <tr><td class="figure">−42%</td><td class="meaning">Drop in middle management postings since 2022.</td><td class="source">Fortune</td></tr>
+        <tr><td class="figure">−30%</td><td class="meaning">Drop in entry-level job postings since 2022.</td><td class="source">Fortune</td></tr>
+        <tr><td class="figure">21%</td><td class="meaning">Global employee engagement — the lowest since COVID.</td><td class="source">Gallup</td></tr>
+        <tr><td class="figure">30 → 27%</td><td class="meaning">Manager engagement decline (2023 to 2024).</td><td class="source">Gallup</td></tr>
+        <tr><td class="figure">3×</td><td class="meaning">Healthy organizations outperform unhealthy peers on shareholder returns.</td><td class="source">McKinsey OHI</td></tr>
+        <tr><td class="figure">$438B</td><td class="meaning">Lost global productivity from disengagement.</td><td class="source">Gallup</td></tr>
+        <tr><td class="figure">23%</td><td class="meaning">CHROs planning to redeploy workforce to new roles.</td><td class="source">Salesforce</td></tr>
+        <tr><td class="figure">30%</td><td class="meaning">Expected productivity gain from full agent implementation.</td><td class="source">Salesforce</td></tr>
+      </tbody>
+    </table>
+
+    <p class="numbers-foot">Read together, these numbers describe an organization adding capacity at unprecedented speed while simultaneously losing the human signal systems that detect when something is going wrong.</p>
+  </div>
+</section>
+
+<!-- ─────────── SEVEN QUESTIONS ─────────── -->
+<section id="questions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label"><span class="num">§ 03</span> The Seven Questions</div>
+      <div>
+        <h2 class="section-title">Seven questions <em>no one is asking.</em></h2>
+        <p class="section-dek">The agentic workforce creates governance gaps that no existing HR system, engagement survey, or org design framework was built to address. Each question below represents a gap between what organizations are building and what they are prepared to manage.</p>
+      </div>
+    </div>
+
+    <div class="questions">
+      <article class="q">
+        <div class="q-num">01</div>
+        <div class="q-body">
+          <h3>Where do the agentic employees sit on the org chart?</h3>
+          <p>No major HRIS, ATS, or workforce planning tool includes a concept of a non-human worker. AI agents are provisioned by IT, budgeted by Finance, and governed by no one. CHROs project that 61% of employees will remain in current roles working alongside agents — yet no system tracks the composition, capacity, or health of this blended workforce. <em class="callout">The org chart has blind spots the size of entire departments.</em></p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Workforce visibility</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">02</div>
+        <div class="q-body">
+          <h3>Who is accountable when an agent causes harm?</h3>
+          <p>AI regulation is emerging unevenly across jurisdictions. As one CHRO noted at a recent roundtable, governance requirements will likely vary by industry: banking will face stricter requirements than creative industries. Today, most companies have no internal governance structure for agent decisions. When an agent surfaces a biased recommendation, screens out a qualified candidate, or executes a workflow that harms an employee, <em class="callout">the accountability chain is undefined.</em></p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Accountability</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">03</div>
+        <div class="q-body">
+          <h3>Are you measuring the health of human–AI collaboration, or just AI output?</h3>
+          <p>McKinsey's Organizational Health Index — built on 20+ years of data from 2,600+ organizations and 8M+ survey responses — has established that top-quartile healthy organizations deliver 3× shareholder returns versus bottom-quartile peers. But the OHI was designed for a fully human workforce. <em class="callout">No equivalent diagnostic exists for the blended workforce.</em></p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Health measurement</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">04</div>
+        <div class="q-body">
+          <h3>What happens to organizational signal when the middle layer disappears?</h3>
+          <p>Middle management has historically served as the signal relay of the organization: surfacing problems from the front line, translating strategy from the top, and providing the early warning system that keeps leadership connected to reality. Since 2022, middle management postings have dropped 42% and entry-level postings have dropped 30%. <em class="callout">These roles are not being optimized — they are being eliminated. Who provides the signal now?</em></p>
+          <p>Gallup's data sharpens the point: global employee engagement has fallen to 21%, driven by a decline in manager engagement. The greatest declines were among managers under 35 (down 5 points) and female managers (down 7 points). The very people who relay organizational signal are disengaging faster than anyone else.</p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Signal relay</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">05</div>
+        <div class="q-body">
+          <h3>Does your workforce trust AI more than leadership?</h3>
+          <p>The finding that 97% of employees prefer asking ChatGPT for advice over asking their boss is not an AI adoption story. <em class="callout">It is a trust collapse story.</em> Employees have concluded that AI is a more reliable source of guidance than their own management chain. When the workforce trusts a stateless model more than its own leadership, the feedback loops that sustain organizational learning have already broken.</p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Trust</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">06</div>
+        <div class="q-body">
+          <h3>Who governs the shadow org chart?</h3>
+          <p>Shadow AI tool use now outpaces official adoption 2:1. Employees are building their own agentic workflows: personal assistants, document processors, decision support tools, and communication drafters that sit outside any IT governance framework. <em class="callout">This is not a compliance problem. It is a parallel organization running inside the official one</em> — invisible to HR, ungoverned by policy, and generating work product that shapes decisions across the enterprise.</p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Shadow governance</div>
+      </article>
+
+      <article class="q">
+        <div class="q-num">07</div>
+        <div class="q-body">
+          <h3>Can culture survive the transition?</h3>
+          <p>Gartner's 2026 CHRO priorities research found that only 47% of CHROs believe their current culture drives employee performance — and that finding predates the full impact of agentic AI on daily work. PwC describes the shift as the "rise of the generalist," where AI agents enable broader, outcome-focused roles. BCG calls it the "reinvention of the CHRO." Both acknowledge that <em class="callout">the transition requires deliberate cultural design, not just technology deployment.</em></p>
+        </div>
+        <div class="q-tag"><span class="label">Diagnostic gap</span>Culture</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── DIAGNOSIS / TRUTH DEBT ─────────── -->
+<section id="diagnosis" class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label"><span class="num">§ 04</span> The Diagnosis</div>
+      <div>
+        <h2 class="section-title" style="color:var(--paper)">Organizational <em>truth debt</em> in the agentic era.</h2>
+        <p class="section-dek">The Yootle Institute defines <strong style="color:var(--paper)">truth debt</strong> as the gap between what an organization claims and what its people actually experience. Truth debt exists in every organization. It is not a moral failing — it is a measurement problem.</p>
+      </div>
+    </div>
+
+    <p class="pullquote">
+      The agentic workforce accelerates truth debt through four mechanisms. The result is an organization that <em>appears to be running faster</em> while its ability to detect where it is going wrong is deteriorating. <em>Truth debt compounds at scale.</em>
+    </p>
+
+    <div class="mechanisms">
+      <div class="mech">
+        <div class="mnum">Mechanism 01</div>
+        <h4>Silent capacity expansion</h4>
+        <p>AI agents add organizational capacity without adding organizational signal. A human will mention a broken process (sometimes). An agent will execute it faster and never flag it.</p>
+      </div>
+      <div class="mech">
+        <div class="mnum">Mechanism 02</div>
+        <h4>Signal relay elimination</h4>
+        <p>As middle management thins, the humans who historically surfaced problems from the front line to leadership are disappearing. The signal does not reroute. It stops.</p>
+      </div>
+      <div class="mech">
+        <div class="mnum">Mechanism 03</div>
+        <h4>Trust displacement</h4>
+        <p>When employees trust AI over leadership for guidance, they stop providing upward feedback. The organization loses its most important diagnostic channel: honest human signal.</p>
+      </div>
+      <div class="mech">
+        <div class="mnum">Mechanism 04</div>
+        <h4>Governance vacuum</h4>
+        <p>No existing people system tracks, evaluates, or governs AI agents as workforce members. The fastest-growing segment of organizational capacity operates outside all existing frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── RECOMMENDATIONS ─────────── -->
+<section id="actions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label"><span class="num">§ 05</span> What CHROs Can Do Now</div>
+      <div>
+        <h2 class="section-title">Five places <em>to begin.</em></h2>
+        <p class="section-dek">This paper is not prescriptive. The Yootle Institute believes CHROs already possess the expertise to govern the blended workforce — they lack only the instruments and the urgency.</p>
+      </div>
+    </div>
+
+    <div class="recs">
+      <div class="rec">
+        <div class="rec-num">01 · Audit</div>
+        <h4>Audit the shadow workforce.</h4>
+        <p>Before governing AI agents, know where they are. Map every AI tool, bot, and agent operating within the organization, whether provisioned by IT or adopted by individual employees. The 2:1 shadow-to-official ratio means the real agent footprint is likely double what IT reports.</p>
+      </div>
+      <div class="rec">
+        <div class="rec-num">02 · Plan</div>
+        <h4>Include agents in workforce planning.</h4>
+        <p>If 23% of the workforce will be redeployed to new roles, the planning must account for what fills the vacated capacity. Workforce plans that model humans only are modeling half the organization.</p>
+      </div>
+      <div class="rec">
+        <div class="rec-num">03 · Measure</div>
+        <h4>Measure blended workforce health, not just engagement.</h4>
+        <p>Traditional engagement surveys measure human sentiment. They do not measure the health of human–AI collaboration, the quality of agent-mediated decisions, or the signal loss from eliminated roles. The 21% global engagement figure is a trailing indicator.</p>
+      </div>
+      <div class="rec">
+        <div class="rec-num">04 · Protect</div>
+        <h4>Protect the signal layer.</h4>
+        <p>Every role eliminated by AI should be evaluated not only for its output contribution but for its signal contribution: did this role surface problems, relay information, or provide early warning? If yes, the signal function must be preserved even if the output function is automated.</p>
+      </div>
+      <div class="rec">
+        <div class="rec-num">05 · Govern</div>
+        <h4>Establish accountability chains for agent decisions.</h4>
+        <p>Define who is responsible when an AI agent makes a consequential decision. This is not a legal question alone. It is an organizational design question that the CHRO is uniquely positioned to answer.</p>
+      </div>
+      <div class="rec" style="background: var(--paper-warm); padding: 40px; border-right: none !important;">
+        <div class="rec-num" style="color: var(--accent);">Take the next step</div>
+        <h4>Join the CHRO Readiness Assessment.</h4>
+        <p style="margin-bottom: 20px;">A five-question survey of CHROs, Chief People Officers, and Heads of HR to establish a baseline understanding of agentic workforce governance. Results publish Q2 2026.</p>
+        <a class="btn btn-primary" href="#survey" onclick="event.preventDefault(); document.getElementById('survey').scrollIntoView({behavior:'smooth'});">
+          Participate
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SURVEY ─────────── -->
+<section id="survey" class="survey">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:48px;">
+      <div class="section-label"><span class="num">§ 06</span> The CHRO Readiness Assessment</div>
+      <div>
+        <h2>Establish a baseline for governing <em>your blended workforce.</em></h2>
+        <p class="survey-lede">Five questions. Ten minutes. The Yootle Institute is surveying CHROs, Chief People Officers, and Heads of HR from organizations of all sizes and industries. Participating leaders receive advance access to findings and a diagnostic framework for assessing their own organization's readiness.</p>
+      </div>
+    </div>
+
+    <div class="survey-grid">
+      <div class="section-label" style="color: oklch(82% 0.04 30);">Request access</div>
+      <form class="survey-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received ✓'; this.querySelector('button').disabled=true;">
+        <div>
+          <label for="f-name">Full name</label>
+          <input id="f-name" name="name" type="text" placeholder="Jane Doe" required />
+        </div>
+        <div>
+          <label for="f-title">Title</label>
+          <input id="f-title" name="title" type="text" placeholder="Chief People Officer" required />
+        </div>
+        <div>
+          <label for="f-org">Organization</label>
+          <input id="f-org" name="org" type="text" placeholder="Company name" required />
+        </div>
+        <div>
+          <label for="f-size">Headcount</label>
+          <select id="f-size" name="size" required>
+            <option value="">Select range…</option>
+            <option>Under 500</option>
+            <option>500 – 2,000</option>
+            <option>2,000 – 10,000</option>
+            <option>10,000 – 50,000</option>
+            <option>50,000+</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="f-email">Work email</label>
+          <input id="f-email" name="email" type="email" placeholder="you@company.com" required />
+        </div>
+        <div class="full" style="margin-top:8px;">
+          <button class="btn btn-on-accent" type="submit">
+            Send my survey link
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="survey-questions">
+      <div class="survey-q"><span class="qn">Q.1</span><span>Does your organization chart currently include a representation of AI agents or agentic tools as workforce participants?</span></div>
+      <div class="survey-q"><span class="qn">Q.2</span><span>Who in your organization is accountable when an AI agent makes a decision that materially affects an employee?</span></div>
+      <div class="survey-q"><span class="qn">Q.3</span><span>Does your organization currently measure the health of human–AI collaboration (not just AI output or adoption metrics)?</span></div>
+      <div class="survey-q"><span class="qn">Q.4</span><span>Do the employees in your organization know which of their daily workflows involve AI agent participation?</span></div>
+      <div class="survey-q"><span class="qn">Q.5</span><span>What is the single greatest concern you have about integrating agentic AI into your workforce over the next 12 months? (open response)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ABOUT ─────────── -->
+<section id="about" class="alt">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="section-label"><span class="num">§ 07</span> About the Institute</div>
+      <div class="about-body">
+        <p><strong>The Yootle Institute for Employee Dignity</strong> is the research arm of Yootle, the human-led AI utility. Yootle builds tools that give every person safe, private, and revocable AI agents to get their work done on their own terms.</p>
+        <p>For organizations, Yootle provides a governed AI layer: <em>employees get the best tools, companies get the output and organizational insight, nobody gets what they should not have.</em></p>
+        <p>The Institute conducts independent research on organizational health, employee dignity, and the intersection of human and artificial intelligence in the workplace. Our work is grounded in synthesis of established research from McKinsey, Gallup, Edmondson, BCG, Deloitte, SHRM, and others, applied to the emerging governance challenges of the agentic era.</p>
+      </div>
+      <aside class="about-aside">
+        <h4>Contact &amp; Press</h4>
+        <dl>
+          <dt>Research</dt><dd><a href="/cdn-cgi/l/email-protection#483a2d3b2d293a2b20083127273c242d662b2725"><span class="__cf_email__" data-cfemail="3d4f584e585c4f5e557d445252495158135e5250">[email&#160;protected]</span></a></dd>
+          <dt>Press</dt><dd><a href="/cdn-cgi/l/email-protection#95e5e7f0e6e6d5ecfafae1f9f0bbf6faf8"><span class="__cf_email__" data-cfemail="91e1e3f4e2e2d1e8fefee5fdf4bff2fefc">[email&#160;protected]</span></a></dd>
+          <dt>CHRO Survey</dt><dd><a href="/cdn-cgi/l/email-protection#e6948395838794858ea69f8989928a83c885898bd99593848c838592dba5aeb4a9c3d4d6b48387828f88839595c3d4d6a795958395958b838892">Nominate a peer</a></dd>
+          <dt>Yootle</dt><dd><a href="https://yootle.com" target="_blank" rel="noopener">yootle.com →</a></dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── REFERENCES ─────────── -->
+<section class="refs tight" id="references">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 40px;">
+      <div class="section-label"><span class="num">§ 08</span> References</div>
+      <div>
+        <h2 class="section-title" style="font-size: clamp(28px, 3vw, 40px);">The sources behind the findings.</h2>
+      </div>
+    </div>
+    <ol>
+      <li><strong>Salesforce.</strong> "HR Leaders to Redeploy a Quarter of Their Workforce as Agentic AI Adoption Expected to Grow 327% by 2027." Salesforce Newsroom, May 2025. Survey of 200 global HR executives.</li>
+      <li><strong>Pinnacle.</strong> "AI in HR 2026: 10 Predictions from Enterprise CHROs." Pinnacle CHRO Roundtables, February 2026.</li>
+      <li><strong>Fortune.</strong> "66% of CEOs are freezing hiring while betting billions on AI." Fortune, March 2026.</li>
+      <li><strong>Gallup.</strong> "State of the Global Workplace: 2025 Report." Survey of nearly 250,000 workers in 160 nations.</li>
+      <li><strong>McKinsey &amp; Company.</strong> Organizational Health Index — 20+ years of data, 2,600+ organizations, 8M+ survey responses.</li>
+      <li><strong>Gartner.</strong> "CHROs' Top Priorities for 2026 Center Around Realizing AI Value and Driving Performance Amid Uncertainty." Newsroom, October 2025. Survey of 222 CHROs.</li>
+      <li><strong>PwC.</strong> "No More Pyramids: Rethinking Your Workforce for the Agentic AI Era." PwC US, 2026.</li>
+      <li><strong>BCG.</strong> "Reinvention of the CHRO in an AI-Driven Enterprise." Boston Consulting Group, January 2026.</li>
+      <li><strong>HRZone / Josh Bersin Company.</strong> "2026 Imperatives for the AI-Aware CHRO: Preparing for the Superagent." February 2026.</li>
+      <li><strong>Eightfold AI.</strong> "The 2026 AI Transformation Playbook." February 2026.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="wordmark">
+          <span class="mark">Y</span>
+          <span class="stack">
+            <span class="name">The Yootle Institute</span>
+            <span class="sub">For Employee Dignity</span>
+          </span>
+        </a>
+        <div class="foot-tag">Independent research at the intersection of human and artificial intelligence in the workplace.</div>
+      </div>
+      <div class="foot-col">
+        <h5>Report</h5>
+        <ul>
+          <li><a href="#summary">Executive summary</a></li>
+          <li><a href="#numbers">The numbers</a></li>
+          <li><a href="#questions">Seven questions</a></li>
+          <li><a href="#diagnosis">The diagnosis</a></li>
+          <li><a href="#actions">What CHROs can do</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Engage</h5>
+        <ul>
+          <li><a href="#survey">Take the survey</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#ff8d9a8c9a9e8d9c97bf8690908b939ad19c9092">Email research</a></li>
+          <li><a href="uploads/Yootle_Institute_The_Invisible_Workforce_March_2026.pdf" target="_blank" rel="noopener">Download PDF</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Yootle</h5>
+        <ul>
+          <li><a href="https://yootle.com" target="_blank" rel="noopener">yootle.com</a></li>
+          <li><a href="#about">About the Institute</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#0a7a786f79794a7365657e666f24696567">Press inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 The Yootle Institute for Employee Dignity. All rights reserved.</span>
+      <span>This report may be shared freely with attribution.</span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
