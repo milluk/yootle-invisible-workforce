@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Invisible Workforce — The Yootle Institute for Employee Dignity</title>
+<title>The Invisible Workforce: The Yootle Institute for Employee Dignity</title>
 <meta name="description" content="A research brief on the governance gap in the agentic workforce. Where do AI agents sit on the org chart? Published March 2026 by The Yootle Institute for Employee Dignity." />
+<meta property="og:title" content="The Invisible Workforce: The Yootle Institute for Employee Dignity" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://milluk.github.io/yootle-invisible-workforce/" />
+<meta property="og:image" content="https://milluk.github.io/yootle-invisible-workforce/uploads/og-image.png" />
+<meta property="og:description" content="A research brief on the governance gap in the agentic workforce. Where do AI agents sit on the org chart? Published March 2026 by The Yootle Institute for Employee Dignity." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Invisible Workforce: The Yootle Institute for Employee Dignity" />
+<meta name="twitter:description" content="A research brief on the governance gap in the agentic workforce. Where do AI agents sit on the org chart? Published March 2026 by The Yootle Institute for Employee Dignity." />
+<meta name="twitter:image" content="https://milluk.github.io/yootle-invisible-workforce/uploads/og-image.png" />
+<link rel="icon" type="image/png" href="uploads/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,7 +42,7 @@
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
   body {
     background: var(--paper);
     color: var(--ink);
@@ -94,11 +104,14 @@
   .nav-cta {
     font-family: var(--sans);
     font-size: 13px; font-weight: 500;
-    background: var(--ink); color: var(--paper);
+    background: var(--accent); color: var(--paper);
     padding: 9px 16px; border-radius: 2px;
     transition: background .15s ease;
   }
-  .nav-cta:hover { background: var(--accent); color: var(--paper); }
+  /* Higher specificity than nav.primary a:hover to prevent color override */
+  nav.primary a.nav-cta,
+  nav.primary a.nav-cta:hover { color: var(--paper); }
+  .nav-cta:hover { background: var(--accent-deep); }
 
   /* ─────────── Hero ─────────── */
   .hero {
@@ -289,7 +302,7 @@
     margin: 28px 0;
   }
 
-  /* ─────────── Data Table — "The Numbers" ─────────── */
+  /* ─────────── Data Table: "The Numbers" ─────────── */
   .numbers-table {
     width: 100%;
     border-collapse: collapse;
@@ -404,7 +417,7 @@
   }
   .q-tag .label { color: var(--accent); display: block; margin-bottom: 6px; }
 
-  /* ─────────── Truth Debt ─────────── */
+  /* ─────────── Alignment Gap ─────────── */
   .pullquote {
     font-family: var(--serif);
     font-size: clamp(28px, 3.2vw, 40px);
@@ -735,11 +748,11 @@
       </span>
     </a>
     <nav class="primary">
-      <a href="#report">The Report</a>
+      <a href="#summary">The Report</a>
       <a href="#numbers">Findings</a>
       <a href="#survey">CHRO Survey</a>
       <a href="#about">About</a>
-      <a href="#survey" class="nav-cta">Take the Survey</a>
+      <a href="#survey" class="nav-cta">Request Survey Access</a>
     </nav>
   </div>
 </header>
@@ -754,11 +767,11 @@
     </div>
     <h1 class="title">The Invisible<br/>Workforce.<br/><em>Where do AI agents<br/>sit on the org chart?</em></h1>
     <p class="deck">
-      A research brief on <strong>the governance gap in the agentic workforce</strong> — and why CHROs, Chief People Officers, and Heads of HR must act now to govern a workforce that is growing faster than any in history, with zero representation in existing people systems.
+      A research brief on <strong>the governance gap in the agentic workforce</strong> and why CHROs, Chief People Officers, and Heads of HR must act now to govern a workforce that is growing faster than any in history, with zero representation in existing people systems.
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('survey').scrollIntoView({behavior:'smooth'});">
-        Participate in the CHRO Survey
+        Request Survey Access
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
       </a>
       <a class="btn btn-secondary" href="uploads/Yootle_Institute_The_Invisible_Workforce_March_2026.pdf" target="_blank" rel="noopener">
@@ -795,13 +808,13 @@
       <div class="section-label"><span class="num">§ 01</span> Executive Summary</div>
       <div class="summary-body">
         <p>
-          By the end of 2027, CHROs expect a <strong>327% increase</strong> in AI agent adoption within their organizations. Eighty percent of business leaders expect to use AI agents to expand workforce capacity. One in five companies plans to use AI to eliminate more than half of their mid-tier roles by late 2026. <strong>This is not a forecast. It is a transition already underway.</strong>
+          By the end of 2027, CHROs expect a <strong>327% increase</strong> in AI agent adoption within their organizations. Eighty percent of business leaders expect to use AI agents to expand workforce capacity. One in five companies plans to use AI to eliminate more than half of their mid-tier roles by late 2026. These projections describe a transition that has already begun.
         </p>
         <p>
           Yet the humans responsible for governing this workforce have no tools, no frameworks, and no precedent for managing it. No major HR information system tracks AI agents as workforce members. No org chart includes them. No performance review evaluates the quality of human–AI collaboration.
         </p>
         <p>
-          The agentic workforce represents <strong>the largest ungoverned expansion of organizational capacity in modern history</strong> — and the CHRO is the only executive positioned to govern it before it governs itself.
+          The agentic workforce is expanding faster than governance frameworks exist to account for it. The CHRO is the executive positioned to close that gap. Workforce accountability sits nowhere else.
         </p>
       </div>
       <aside class="summary-aside">
@@ -824,7 +837,7 @@
     <div class="section-head">
       <div class="section-label"><span class="num">§ 02</span> The Numbers</div>
       <div>
-        <h2 class="section-title">A workforce arriving <em>without governance.</em></h2>
+        <h2 class="section-title">A workforce arriving <em>ahead of governance.</em></h2>
         <p class="section-dek">The scale of the shift is no longer debatable. What follows is drawn entirely from published research by Salesforce, Gallup, McKinsey, Gartner, PwC, BCG, Fortune, and primary CHRO surveys.</p>
       </div>
     </div>
@@ -846,7 +859,7 @@
         <tr><td class="figure">20%</td><td class="meaning">Companies planning to flatten hierarchy using AI by late 2026.</td><td class="source">Fortune</td></tr>
         <tr><td class="figure">−42%</td><td class="meaning">Drop in middle management postings since 2022.</td><td class="source">Fortune</td></tr>
         <tr><td class="figure">−30%</td><td class="meaning">Drop in entry-level job postings since 2022.</td><td class="source">Fortune</td></tr>
-        <tr><td class="figure">21%</td><td class="meaning">Global employee engagement — the lowest since COVID.</td><td class="source">Gallup</td></tr>
+        <tr><td class="figure">21%</td><td class="meaning">Global employee engagement (the lowest since COVID).</td><td class="source">Gallup</td></tr>
         <tr><td class="figure">30 → 27%</td><td class="meaning">Manager engagement decline (2023 to 2024).</td><td class="source">Gallup</td></tr>
         <tr><td class="figure">3×</td><td class="meaning">Healthy organizations outperform unhealthy peers on shareholder returns.</td><td class="source">McKinsey OHI</td></tr>
         <tr><td class="figure">$438B</td><td class="meaning">Lost global productivity from disengagement.</td><td class="source">Gallup</td></tr>
@@ -875,7 +888,7 @@
         <div class="q-num">01</div>
         <div class="q-body">
           <h3>Where do the agentic employees sit on the org chart?</h3>
-          <p>No major HRIS, ATS, or workforce planning tool includes a concept of a non-human worker. AI agents are provisioned by IT, budgeted by Finance, and governed by no one. CHROs project that 61% of employees will remain in current roles working alongside agents — yet no system tracks the composition, capacity, or health of this blended workforce. <em class="callout">The org chart has blind spots the size of entire departments.</em></p>
+          <p>No major HRIS, ATS, or workforce planning tool includes a concept of a non-human worker. AI agents are provisioned by IT, budgeted by Finance, and governed by no one. CHROs project that 61% of employees will remain in current roles working alongside agents. Yet no system tracks the composition, capacity, or health of this blended workforce. <em class="callout">The org chart has blind spots the size of entire departments.</em></p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Workforce visibility</div>
       </article>
@@ -893,7 +906,7 @@
         <div class="q-num">03</div>
         <div class="q-body">
           <h3>Are you measuring the health of human–AI collaboration, or just AI output?</h3>
-          <p>McKinsey's Organizational Health Index — built on 20+ years of data from 2,600+ organizations and 8M+ survey responses — has established that top-quartile healthy organizations deliver 3× shareholder returns versus bottom-quartile peers. But the OHI was designed for a fully human workforce. <em class="callout">No equivalent diagnostic exists for the blended workforce.</em></p>
+          <p>McKinsey's Organizational Health Index (built on 20+ years of data from 2,600+ organizations and 8M+ survey responses) has established that top-quartile healthy organizations deliver 3× shareholder returns versus bottom-quartile peers. But the OHI was designed for a fully human workforce. <em class="callout">No equivalent diagnostic exists for the blended workforce.</em></p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Health measurement</div>
       </article>
@@ -902,7 +915,7 @@
         <div class="q-num">04</div>
         <div class="q-body">
           <h3>What happens to organizational signal when the middle layer disappears?</h3>
-          <p>Middle management has historically served as the signal relay of the organization: surfacing problems from the front line, translating strategy from the top, and providing the early warning system that keeps leadership connected to reality. Since 2022, middle management postings have dropped 42% and entry-level postings have dropped 30%. <em class="callout">These roles are not being optimized — they are being eliminated. Who provides the signal now?</em></p>
+          <p>Middle management has historically served as the signal relay of the organization: surfacing problems from the front line, translating strategy from the top, and providing the early warning system that keeps leadership connected to reality. Since 2022, middle management postings have dropped 42% and entry-level postings have dropped 30%. <em class="callout">These roles are contracting at a rate that signal relay has historically depended on. What replaces that function in the org chart has not yet been defined.</em></p>
           <p>Gallup's data sharpens the point: global employee engagement has fallen to 21%, driven by a decline in manager engagement. The greatest declines were among managers under 35 (down 5 points) and female managers (down 7 points). The very people who relay organizational signal are disengaging faster than anyone else.</p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Signal relay</div>
@@ -912,7 +925,7 @@
         <div class="q-num">05</div>
         <div class="q-body">
           <h3>Does your workforce trust AI more than leadership?</h3>
-          <p>The finding that 97% of employees prefer asking ChatGPT for advice over asking their boss is not an AI adoption story. <em class="callout">It is a trust collapse story.</em> Employees have concluded that AI is a more reliable source of guidance than their own management chain. When the workforce trusts a stateless model more than its own leadership, the feedback loops that sustain organizational learning have already broken.</p>
+          <p>The finding that 97% of employees prefer asking ChatGPT for advice over asking their boss is more than an adoption signal. <em class="callout">It is a feedback-loop signal.</em> Something in the guidance chain is not meeting the need that employees are bringing to it. When a stateless model consistently outcompetes internal channels for everyday guidance, the feedback loops that sustain organizational learning are not being used.</p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Trust</div>
       </article>
@@ -921,7 +934,7 @@
         <div class="q-num">06</div>
         <div class="q-body">
           <h3>Who governs the shadow org chart?</h3>
-          <p>Shadow AI tool use now outpaces official adoption 2:1. Employees are building their own agentic workflows: personal assistants, document processors, decision support tools, and communication drafters that sit outside any IT governance framework. <em class="callout">This is not a compliance problem. It is a parallel organization running inside the official one</em> — invisible to HR, ungoverned by policy, and generating work product that shapes decisions across the enterprise.</p>
+          <p>Shadow AI tool use now outpaces official adoption 2:1. Employees are building their own agentic workflows: personal assistants, document processors, decision support tools, and communication drafters that sit outside any IT governance framework. <em class="callout">This is not a compliance problem. It is a parallel organization running inside the official one.</em> It is invisible to HR, ungoverned by policy, and generating work product that shapes decisions across the enterprise.</p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Shadow governance</div>
       </article>
@@ -930,7 +943,7 @@
         <div class="q-num">07</div>
         <div class="q-body">
           <h3>Can culture survive the transition?</h3>
-          <p>Gartner's 2026 CHRO priorities research found that only 47% of CHROs believe their current culture drives employee performance — and that finding predates the full impact of agentic AI on daily work. PwC describes the shift as the "rise of the generalist," where AI agents enable broader, outcome-focused roles. BCG calls it the "reinvention of the CHRO." Both acknowledge that <em class="callout">the transition requires deliberate cultural design, not just technology deployment.</em></p>
+          <p>Gartner's 2026 CHRO priorities research found that only 47% of CHROs believe their current culture drives employee performance. That finding predates the full impact of agentic AI on daily work. PwC describes the shift as the "rise of the generalist," where AI agents enable broader, outcome-focused roles. BCG calls it the "reinvention of the CHRO." Both acknowledge that <em class="callout">the transition requires deliberate cultural design, not just technology deployment.</em></p>
         </div>
         <div class="q-tag"><span class="label">Diagnostic gap</span>Culture</div>
       </article>
@@ -944,13 +957,13 @@
     <div class="section-head">
       <div class="section-label"><span class="num">§ 04</span> The Diagnosis</div>
       <div>
-        <h2 class="section-title" style="color:var(--paper)">Organizational <em>truth debt</em> in the agentic era.</h2>
-        <p class="section-dek">The Yootle Institute defines <strong style="color:var(--paper)">truth debt</strong> as the gap between what an organization claims and what its people actually experience. Truth debt exists in every organization. It is not a moral failing — it is a measurement problem.</p>
+        <h2 class="section-title" style="color:var(--paper)">Organizational <em>alignment gap</em> in the agentic era.</h2>
+        <p class="section-dek">The Yootle Institute defines <strong style="color:var(--paper)">alignment gap</strong> as the gap between what an organization claims and what its people actually experience. Alignment gap exists in every organization. It is not a moral failing. It is a measurement problem.</p>
       </div>
     </div>
 
     <p class="pullquote">
-      The agentic workforce accelerates truth debt through four mechanisms. The result is an organization that <em>appears to be running faster</em> while its ability to detect where it is going wrong is deteriorating. <em>Truth debt compounds at scale.</em>
+      The agentic workforce widens the alignment gap through four mechanisms. The result is an organization that <em>appears to be running faster</em> while its ability to detect where it is going wrong is deteriorating. <em>Alignment gaps compound at scale.</em>
     </p>
 
     <div class="mechanisms">
@@ -967,7 +980,7 @@
       <div class="mech">
         <div class="mnum">Mechanism 03</div>
         <h4>Trust displacement</h4>
-        <p>When employees trust AI over leadership for guidance, they stop providing upward feedback. The organization loses its most important diagnostic channel: honest human signal.</p>
+        <p>When employees turn to AI over internal channels for guidance, upward feedback diminishes. The organization loses a key diagnostic channel: direct human signal.</p>
       </div>
       <div class="mech">
         <div class="mnum">Mechanism 04</div>
@@ -985,7 +998,7 @@
       <div class="section-label"><span class="num">§ 05</span> What CHROs Can Do Now</div>
       <div>
         <h2 class="section-title">Five places <em>to begin.</em></h2>
-        <p class="section-dek">This paper is not prescriptive. The Yootle Institute believes CHROs already possess the expertise to govern the blended workforce — they lack only the instruments and the urgency.</p>
+        <p class="section-dek">This paper is not prescriptive. The Yootle Institute believes CHROs already possess the expertise to govern the blended workforce. They lack only the instruments and the urgency.</p>
       </div>
     </div>
 
@@ -1013,7 +1026,7 @@
       <div class="rec">
         <div class="rec-num">05 · Govern</div>
         <h4>Establish accountability chains for agent decisions.</h4>
-        <p>Define who is responsible when an AI agent makes a consequential decision. This is not a legal question alone. It is an organizational design question that the CHRO is uniquely positioned to answer.</p>
+        <p>Define who is responsible when an AI agent makes a consequential decision. This is not a legal question alone. It is an organizational design question. The CHRO is the executive positioned to answer it.</p>
       </div>
       <div class="rec" style="background: var(--paper-warm); padding: 40px; border-right: none !important;">
         <div class="rec-num" style="color: var(--accent);">Take the next step</div>
@@ -1041,7 +1054,7 @@
 
     <div class="survey-grid">
       <div class="section-label" style="color: oklch(82% 0.04 30);">Request access</div>
-      <form class="survey-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received ✓'; this.querySelector('button').disabled=true;">
+      <form id="chro-form" class="survey-form">
         <div>
           <label for="f-name">Full name</label>
           <input id="f-name" name="name" type="text" placeholder="Jane Doe" required />
@@ -1052,11 +1065,11 @@
         </div>
         <div>
           <label for="f-org">Organization</label>
-          <input id="f-org" name="org" type="text" placeholder="Company name" required />
+          <input id="f-org" name="organization" type="text" placeholder="Company name" required />
         </div>
         <div>
           <label for="f-size">Headcount</label>
-          <select id="f-size" name="size" required>
+          <select id="f-size" name="headcount" required>
             <option value="">Select range…</option>
             <option>Under 500</option>
             <option>500 – 2,000</option>
@@ -1070,11 +1083,12 @@
           <input id="f-email" name="email" type="email" placeholder="you@company.com" required />
         </div>
         <div class="full" style="margin-top:8px;">
-          <button class="btn btn-on-accent" type="submit">
+          <button id="chro-form-btn" class="btn btn-on-accent" type="submit">
             Send my survey link
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
           </button>
         </div>
+        <div id="chro-form-status" role="status" aria-live="polite" style="display:none; margin-top:12px; font-size:14px; color: oklch(40% 0.12 30);"></div>
       </form>
     </div>
 
@@ -1101,9 +1115,9 @@
       <aside class="about-aside">
         <h4>Contact &amp; Press</h4>
         <dl>
-          <dt>Research</dt><dd><a href="/cdn-cgi/l/email-protection#483a2d3b2d293a2b20083127273c242d662b2725"><span class="__cf_email__" data-cfemail="3d4f584e585c4f5e557d445252495158135e5250">[email&#160;protected]</span></a></dd>
-          <dt>Press</dt><dd><a href="/cdn-cgi/l/email-protection#95e5e7f0e6e6d5ecfafae1f9f0bbf6faf8"><span class="__cf_email__" data-cfemail="91e1e3f4e2e2d1e8fefee5fdf4bff2fefc">[email&#160;protected]</span></a></dd>
-          <dt>CHRO Survey</dt><dd><a href="/cdn-cgi/l/email-protection#e6948395838794858ea69f8989928a83c885898bd99593848c838592dba5aeb4a9c3d4d6b48387828f88839595c3d4d6a795958395958b838892">Nominate a peer</a></dd>
+          <dt>Research</dt><dd><a href="mailto:research@yootle.com?subject=Yootle%20Institute%20%E2%80%94%20research%20inquiry">research@yootle.com</a></dd>
+          <dt>Press</dt><dd><a href="mailto:press@yootle.com?subject=Yootle%20Institute%20%E2%80%94%20press%20inquiry">press@yootle.com</a></dd>
+          <dt>CHRO Survey</dt><dd><a href="mailto:chro-survey@yootle.com?subject=CHRO%20Survey%20nomination&body=I%27d%20like%20to%20nominate%20a%20peer%20for%20the%20Yootle%20Institute%20CHRO%20Readiness%20Assessment.%0A%0ANominee%20name%3A%0ANominee%20title%3A%0ANominee%20organization%3A%0ANominee%20email%3A%0A%0AContext%20(optional)%3A">Nominate a peer</a></dd>
           <dt>Yootle</dt><dd><a href="https://yootle.com" target="_blank" rel="noopener">yootle.com →</a></dd>
         </dl>
       </aside>
@@ -1125,7 +1139,7 @@
       <li><strong>Pinnacle.</strong> "AI in HR 2026: 10 Predictions from Enterprise CHROs." Pinnacle CHRO Roundtables, February 2026.</li>
       <li><strong>Fortune.</strong> "66% of CEOs are freezing hiring while betting billions on AI." Fortune, March 2026.</li>
       <li><strong>Gallup.</strong> "State of the Global Workplace: 2025 Report." Survey of nearly 250,000 workers in 160 nations.</li>
-      <li><strong>McKinsey &amp; Company.</strong> Organizational Health Index — 20+ years of data, 2,600+ organizations, 8M+ survey responses.</li>
+      <li><strong>McKinsey &amp; Company.</strong> Organizational Health Index: 20+ years of data, 2,600+ organizations, 8M+ survey responses.</li>
       <li><strong>Gartner.</strong> "CHROs' Top Priorities for 2026 Center Around Realizing AI Value and Driving Performance Amid Uncertainty." Newsroom, October 2025. Survey of 222 CHROs.</li>
       <li><strong>PwC.</strong> "No More Pyramids: Rethinking Your Workforce for the Agentic AI Era." PwC US, 2026.</li>
       <li><strong>BCG.</strong> "Reinvention of the CHRO in an AI-Driven Enterprise." Boston Consulting Group, January 2026.</li>
@@ -1162,8 +1176,8 @@
       <div class="foot-col">
         <h5>Engage</h5>
         <ul>
-          <li><a href="#survey">Take the survey</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#ff8d9a8c9a9e8d9c97bf8690908b939ad19c9092">Email research</a></li>
+          <li><a href="#survey">Request survey access</a></li>
+          <li><a href="mailto:research@yootle.com?subject=Yootle%20Institute%20%E2%80%94%20research%20inquiry">Email research</a></li>
           <li><a href="uploads/Yootle_Institute_The_Invisible_Workforce_March_2026.pdf" target="_blank" rel="noopener">Download PDF</a></li>
           <li><a href="#references">References</a></li>
         </ul>
@@ -1173,7 +1187,7 @@
         <ul>
           <li><a href="https://yootle.com" target="_blank" rel="noopener">yootle.com</a></li>
           <li><a href="#about">About the Institute</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#0a7a786f79794a7365657e666f24696567">Press inquiries</a></li>
+          <li><a href="mailto:press@yootle.com?subject=Yootle%20Institute%20%E2%80%94%20press%20inquiry">Press inquiries</a></li>
         </ul>
       </div>
     </div>
@@ -1184,5 +1198,65 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+<script>
+(function () {
+  var form = document.getElementById('chro-form');
+  if (!form) return;
+  var btn = document.getElementById('chro-form-btn');
+  var status = document.getElementById('chro-form-status');
+  var btnOriginalHTML = btn.innerHTML;
+
+  function showError(msg) {
+    status.textContent = msg;
+    status.style.display = 'block';
+    status.style.color = 'oklch(40% 0.12 30)';
+  }
+  function clearStatus() {
+    status.textContent = '';
+    status.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearStatus();
+
+    var name = form.querySelector('[name="name"]').value.trim();
+    var org = form.querySelector('[name="organization"]').value.trim();
+    var headcount = form.querySelector('[name="headcount"]').value;
+    var email = form.querySelector('[name="email"]').value.trim();
+
+    if (!name) { showError('Please enter your full name.'); return; }
+    if (!org) { showError('Please enter your organization name.'); return; }
+    if (!headcount) { showError('Please select your headcount range.'); return; }
+    if (!email || email.indexOf('@') === -1) { showError('Please enter a valid work email.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = {};
+    (new FormData(form)).forEach(function (val, key) { data[key] = val; });
+
+    fetch('https://formspree.io/f/mqenjbwn', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function (res) {
+      if (res.ok) {
+        form.outerHTML = '<p class="form-success" style="font-family:var(--serif);font-size:1.15rem;padding:32px 0;color:var(--ink);">Thank you. The survey link will arrive in your inbox shortly.</p>';
+      } else {
+        return res.json().then(function (body) {
+          var msg = body && body.errors ? body.errors.map(function (er) { return er.message; }).join(' ') : 'Submission failed.';
+          throw new Error(msg);
+        });
+      }
+    })
+    .catch(function () {
+      btn.disabled = false;
+      btn.innerHTML = btnOriginalHTML;
+      showError('Something went wrong. Please try again or email research@yootle.com.');
+    });
+  });
+})();
+</script></body>
 </html>
