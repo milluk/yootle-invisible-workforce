@@ -1254,7 +1254,7 @@
     })
     .then(function (res) {
       if (res.ok) {
-        form.outerHTML = ‘<p class="form-success" style="font-family:var(--serif);font-size:1.15rem;padding:32px 0;color:var(--paper);">Thank you. Your responses are recorded. We\’ll be in touch about next steps.</p>’;
+        form.outerHTML = `<p class="form-success" style="font-family:var(--serif);font-size:1.15rem;padding:32px 0;color:var(--paper);">Thank you. Your responses are recorded. We'll be in touch about next steps.</p>`;
       } else {
         return res.json().then(function (body) {
           var msg = body && body.errors ? body.errors.map(function (er) { return er.message; }).join(' ') : 'Submission failed.';
