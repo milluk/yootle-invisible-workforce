@@ -543,7 +543,7 @@
     text-transform: uppercase; color: oklch(82% 0.04 30);
     display: block; margin-bottom: 8px;
   }
-  .survey-form input, .survey-form select {
+  .survey-form input, .survey-form select, .survey-form textarea {
     width: 100%;
     font-family: var(--sans); font-size: 15px;
     background: transparent;
@@ -554,40 +554,39 @@
     outline: none;
     transition: border-color .2s ease;
   }
-  .survey-form input::placeholder { color: oklch(75% 0.04 30); }
-  .survey-form input:focus, .survey-form select:focus {
+  .survey-form input::placeholder,
+  .survey-form textarea::placeholder { color: oklch(75% 0.04 30); }
+  .survey-form input:focus, .survey-form select:focus, .survey-form textarea:focus {
     border-bottom-color: var(--paper);
   }
   .survey-form select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23f5ecdd' stroke-width='1.5' d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; cursor: pointer; }
   .survey-form select option { background: var(--accent-deep); color: var(--paper); }
+  .survey-form textarea { resize: vertical; line-height: 1.5; }
+  .survey-divider {
+    border-top: 1px solid oklch(70% 0.06 30);
+    margin-top: 8px;
+  }
+  .survey-form .q-label {
+    font-family: var(--serif);
+    font-size: 16px; font-weight: 300;
+    line-height: 1.45;
+    color: oklch(94% 0.03 35);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 12px;
+  }
+  .survey-form .q-label .qn {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: oklch(75% 0.04 30);
+    margin-right: 10px;
+  }
 
   .btn-on-accent {
     background: var(--paper); color: var(--accent);
   }
   .btn-on-accent:hover { background: var(--ink); color: var(--paper); }
-
-  .survey-questions {
-    margin-top: 56px;
-    border-top: 1px solid oklch(70% 0.06 30);
-    padding-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 48px;
-  }
-  .survey-q {
-    display: flex; gap: 16px;
-    font-family: var(--serif);
-    font-size: 17px; line-height: 1.45;
-    color: oklch(94% 0.03 35);
-    font-weight: 300;
-  }
-  .survey-q .qn {
-    font-family: var(--mono); font-size: 12px;
-    color: var(--paper);
-    flex: 0 0 auto;
-    padding-top: 4px;
-    opacity: 0.7;
-  }
 
   /* ─────────── About ─────────── */
   .about-grid {
@@ -719,7 +718,6 @@
     .refs ol { columns: 1; }
     .foot-top { grid-template-columns: 1fr 1fr; gap: 32px; }
     .survey-form { grid-template-columns: 1fr; }
-    .survey-questions { grid-template-columns: 1fr; }
     nav.primary { gap: 14px; }
     nav.primary a:not(.nav-cta) { display: none; }
   }
@@ -752,7 +750,7 @@
       <a href="#numbers">Findings</a>
       <a href="#survey">CHRO Survey</a>
       <a href="#about">About</a>
-      <a href="#survey" class="nav-cta">Request Survey Access</a>
+      <a href="#survey" class="nav-cta">Take the Survey</a>
     </nav>
   </div>
 </header>
@@ -771,7 +769,7 @@
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#" onclick="event.preventDefault(); document.getElementById('survey').scrollIntoView({behavior:'smooth'});">
-        Request Survey Access
+        Take the Survey
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
       </a>
       <a class="btn btn-secondary" href="uploads/Yootle_Institute_The_Invisible_Workforce_March_2026.pdf" target="_blank" rel="noopener">
@@ -1048,7 +1046,7 @@
       <div class="section-label"><span class="num">§ 06</span> The CHRO Readiness Assessment</div>
       <div>
         <h2>Establish a baseline for governing <em>your blended workforce.</em></h2>
-        <p class="survey-lede">Five questions. Ten minutes. The Yootle Institute is surveying CHROs, Chief People Officers, and Heads of HR from organizations of all sizes and industries. Participating leaders receive advance access to findings and a diagnostic framework for assessing their own organization's readiness.</p>
+        <p class="survey-lede">Five questions. Five minutes. The Yootle Institute is surveying CHROs, Chief People Officers, and Heads of HR from organizations of all sizes and industries. Contact fields are required. Survey responses are optional, but they shape the diagnostic framework we're building.</p>
       </div>
     </div>
 
@@ -1082,23 +1080,37 @@
           <label for="f-email">Work email</label>
           <input id="f-email" name="email" type="email" placeholder="you@company.com" required />
         </div>
+        <div class="full survey-divider"></div>
+        <div class="full">
+          <label class="q-label" for="f-q1"><span class="qn">Q.1</span>Does your organization chart currently include a representation of AI agents or agentic tools as workforce participants?</label>
+          <textarea id="f-q1" name="q1" rows="3"></textarea>
+        </div>
+        <div class="full">
+          <label class="q-label" for="f-q2"><span class="qn">Q.2</span>Who in your organization is accountable when an AI agent makes a decision that materially affects an employee?</label>
+          <textarea id="f-q2" name="q2" rows="3"></textarea>
+        </div>
+        <div class="full">
+          <label class="q-label" for="f-q3"><span class="qn">Q.3</span>Does your organization currently measure the health of human–AI collaboration (not just AI output or adoption metrics)?</label>
+          <textarea id="f-q3" name="q3" rows="3"></textarea>
+        </div>
+        <div class="full">
+          <label class="q-label" for="f-q4"><span class="qn">Q.4</span>Do the employees in your organization know which of their daily workflows involve AI agent participation?</label>
+          <textarea id="f-q4" name="q4" rows="3"></textarea>
+        </div>
+        <div class="full">
+          <label class="q-label" for="f-q5"><span class="qn">Q.5</span>What is the single greatest concern you have about integrating agentic AI into your workforce over the next 12 months? (open response)</label>
+          <textarea id="f-q5" name="q5" rows="5"></textarea>
+        </div>
         <div class="full" style="margin-top:8px;">
           <button id="chro-form-btn" class="btn btn-on-accent" type="submit">
-            Send my survey link
+            Submit Responses
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
           </button>
         </div>
-        <div id="chro-form-status" role="status" aria-live="polite" style="display:none; margin-top:12px; font-size:14px; color: oklch(40% 0.12 30);"></div>
+        <div id="chro-form-status" role="status" aria-live="polite" style="display:none; margin-top:12px; font-size:14px; color: oklch(90% 0.09 35);"></div>
       </form>
     </div>
 
-    <div class="survey-questions">
-      <div class="survey-q"><span class="qn">Q.1</span><span>Does your organization chart currently include a representation of AI agents or agentic tools as workforce participants?</span></div>
-      <div class="survey-q"><span class="qn">Q.2</span><span>Who in your organization is accountable when an AI agent makes a decision that materially affects an employee?</span></div>
-      <div class="survey-q"><span class="qn">Q.3</span><span>Does your organization currently measure the health of human–AI collaboration (not just AI output or adoption metrics)?</span></div>
-      <div class="survey-q"><span class="qn">Q.4</span><span>Do the employees in your organization know which of their daily workflows involve AI agent participation?</span></div>
-      <div class="survey-q"><span class="qn">Q.5</span><span>What is the single greatest concern you have about integrating agentic AI into your workforce over the next 12 months? (open response)</span></div>
-    </div>
   </div>
 </section>
 
@@ -1208,7 +1220,7 @@
   function showError(msg) {
     status.textContent = msg;
     status.style.display = 'block';
-    status.style.color = 'oklch(40% 0.12 30)';
+    status.style.color = 'oklch(90% 0.09 35)';
   }
   function clearStatus() {
     status.textContent = '';
@@ -1242,7 +1254,7 @@
     })
     .then(function (res) {
       if (res.ok) {
-        form.outerHTML = '<p class="form-success" style="font-family:var(--serif);font-size:1.15rem;padding:32px 0;color:var(--ink);">Thank you. The survey link will arrive in your inbox shortly.</p>';
+        form.outerHTML = ‘<p class="form-success" style="font-family:var(--serif);font-size:1.15rem;padding:32px 0;color:var(--paper);">Thank you. Your responses are recorded. We\’ll be in touch about next steps.</p>’;
       } else {
         return res.json().then(function (body) {
           var msg = body && body.errors ? body.errors.map(function (er) { return er.message; }).join(' ') : 'Submission failed.';
